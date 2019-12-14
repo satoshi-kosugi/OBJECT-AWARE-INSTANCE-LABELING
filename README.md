@@ -33,7 +33,7 @@ Our code is based on [Caffe](http://caffe.berkeleyvision.org/), [fast r-cnn](htt
 1. Clone the repository
   ```Shell
   # Make sure to clone with --recursive
-  git clone --recursive https://github.com/satoshi-kosugi/OBJECT-AWARE-INSTANCE-LABELING_kari.git
+  git clone --recursive https://github.com/satoshi-kosugi/OBJECT-AWARE-INSTANCE-LABELING.git
   ```
 
 2. Build the Cython modules
