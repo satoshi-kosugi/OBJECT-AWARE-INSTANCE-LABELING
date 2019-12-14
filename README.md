@@ -17,7 +17,15 @@ Our code is based on [Caffe](http://caffe.berkeleyvision.org/), [fast r-cnn](htt
   WITH_PYTHON_LAYER := 1
   ```
 
-2. Python packages you might not have: `cython`, `python-opencv`, `easydict`
+2. Python 2.7 and the following packages:
+    - easydict
+    - numpy
+    - scikit-image
+    - protobuf
+    - opencv-python
+    - cython
+    - pyyaml
+
 3. MATLAB
 
 ## Installation
