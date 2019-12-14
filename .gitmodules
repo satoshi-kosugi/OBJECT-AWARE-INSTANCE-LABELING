@@ -1,0 +1,6 @@
+[submodule "caffe"]
+	path = caffe-oicr
+	url = git@github.com:satoshi-kosugi/caffe.git
+[submodule "SaliencyDetection"]
+	path = models/SaliencyDetection
+	url = https://github.com/huaxinxiao/SaliencyDetection.git
