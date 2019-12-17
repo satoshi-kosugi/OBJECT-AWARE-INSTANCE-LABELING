@@ -51,14 +51,19 @@ class OICRLayer(caffe.Layer):
     def forward(self, bottom, top):
         """Get blobs and copy them into this layer's top blob vector."""
         boxes = bottom[0].data[:, 1:]
-        cls_prob = bottom[1].data
+        cls_prob = bottom[1].data.copy()
         im_labels = bottom[2].data
         flg = bottom[3].data
 
         if cls_prob.shape[1] == self._num_classes:
             cls_prob = cls_prob[:, 1:]
 
-        cls_prob[flg > cfg.TRAIN.PROB_THRESH] = -np.inf
+        flg_ = (flg > cfg.TRAIN.PROB_THRESH) * im_labels
+        for i in range(im_labels.shape[1]):
+            if flg_[:, i].min() == 1:
+                flg_[flg[:, i].argmin(), i] = 0
+        flg_[flg_ == 1] = -np.inf
+        cls_prob += flg_
 
         proposals = _get_highest_score_proposals(boxes, cls_prob, im_labels)
         labels, rois, cls_loss_weights = _sample_rois(boxes, proposals, self._num_classes)
